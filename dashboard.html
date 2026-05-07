@@ -164,19 +164,41 @@ lucide.createIcons();
 
 const API = "https://api.fades.lol";
 
-/* AUTH CHECK + LOAD USER */
-async function loadUser(){
+/* helper */
+async function safeFetch(url, options) {
+  try {
+    const res = await fetch(url, options);
+    const text = await res.text();
 
-  const res = await fetch(`${API}/api/profile/me`, {
+    let data;
+    try {
+      data = JSON.parse(text);
+    } catch {
+      console.error("Non-JSON response:", text);
+      throw new Error("API did not return JSON");
+    }
+
+    return { res, data };
+  } catch (err) {
+    console.error("FETCH ERROR:", err);
+    throw err;
+  }
+}
+
+/* AUTH CHECK + LOAD USER */
+async function loadUser() {
+
+  const { res, data } = await safeFetch(`${API}/api/profile/me`, {
     credentials: "include"
   });
 
-  if (!res.ok){
+  if (!res.ok) {
+    console.log("AUTH FAILED:", data);
     window.location.href = "/login";
     return;
   }
 
-  const user = await res.json();
+  const user = data;
 
   username.innerText = user.username;
   email.innerText = user.email;
@@ -190,9 +212,9 @@ async function loadUser(){
 
   accentColor.value = user.profile?.theme?.accentColor || "#8b5cf6";
   backgroundImage.value = user.profile?.theme?.backgroundImage || "";
-  blur.value = user.profile?.theme?.blur || 10;
+  blur.value = user.profile?.theme?.blur ?? 10;
 
-  isPublic.value = user.settings?.isPublic ?? true;
+  isPublic.value = String(user.settings?.isPublic ?? true);
 
 }
 
@@ -220,7 +242,7 @@ saveBtn.addEventListener("click", async () => {
     }
   };
 
-  const res = await fetch(`${API}/api/profile/update`, {
+  const { res, data } = await safeFetch(`${API}/api/profile/update`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json"
@@ -229,10 +251,11 @@ saveBtn.addEventListener("click", async () => {
     body: JSON.stringify(body)
   });
 
-  if (res.ok){
+  if (res.ok) {
     alert("Saved!");
   } else {
-    alert("Error saving");
+    console.error("SAVE FAILED:", data);
+    alert(data.error || "Error saving");
   }
 
 });
