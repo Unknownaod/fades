@@ -298,6 +298,55 @@ body::before{
 
 <script>
 lucide.createIcons();
+
+const API = "https://api.fades.lol";
+
+const usernameInput = document.querySelectorAll(".input input")[0];
+const emailInput = document.querySelectorAll(".input input")[1];
+const passwordInput = document.querySelectorAll(".input input")[2];
+const button = document.querySelector(".submit");
+
+button.addEventListener("click", async () => {
+
+  const username = usernameInput.value.trim();
+  const email = emailInput.value.trim();
+  const password = passwordInput.value.trim();
+
+  if (!username || !email || !password) {
+    alert("Fill in all fields");
+    return;
+  }
+
+  try {
+    const res = await fetch(`${API}/api/auth/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: "include", // 🔥 REQUIRED for sessions
+      body: JSON.stringify({
+        username,
+        email,
+        password
+      })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      alert(data.error || "Signup failed");
+      return;
+    }
+
+    // session cookie is now set by backend
+    window.location.href = "/dashboard";
+
+  } catch (err) {
+    console.error(err);
+    alert("Server error");
+  }
+
+});
 </script>
 
 </body>
