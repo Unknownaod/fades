@@ -301,10 +301,10 @@ const button = document.querySelector(".submit");
 
 button.addEventListener("click", async () => {
 
-  const email = emailInput.value.trim();
+  const username = emailInput.value.trim();
   const password = passwordInput.value.trim();
 
-  if (!email || !password) {
+  if (!username || !password) {
     alert("Fill in all fields");
     return;
   }
@@ -315,9 +315,8 @@ button.addEventListener("click", async () => {
       headers: {
         "Content-Type": "application/json"
       },
-      credentials: "include", // 🔥 REQUIRED for sessions
       body: JSON.stringify({
-        username: email, // (your backend uses username OR email depending on how you built it)
+        username,
         password
       })
     });
@@ -329,7 +328,10 @@ button.addEventListener("click", async () => {
       return;
     }
 
-    // SUCCESS → session cookie is now stored
+    // ✅ STORE JWT TOKEN (NOT SESSION COOKIE)
+    localStorage.setItem("token", data.token);
+
+    // redirect
     window.location.href = "/dashboard";
 
   } catch (err) {
