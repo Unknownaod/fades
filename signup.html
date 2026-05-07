@@ -317,13 +317,16 @@ button.addEventListener("click", async () => {
     return;
   }
 
+  button.disabled = true;
+  button.innerText = "Creating account...";
+
   try {
     const res = await fetch(`${API}/api/auth/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      credentials: "include", // 🔥 REQUIRED for sessions
+      credentials: "include",
       body: JSON.stringify({
         username,
         email,
@@ -331,23 +334,31 @@ button.addEventListener("click", async () => {
       })
     });
 
-    const data = await res.json();
+    let data;
+    try {
+      data = await res.json();
+    } catch (e) {
+      throw new Error("Server did not return JSON (likely SSL/CORS failure)");
+    }
 
     if (!res.ok) {
       alert(data.error || "Signup failed");
       return;
     }
 
-    // session cookie is now set by backend
+    // success
     window.location.href = "/dashboard";
 
   } catch (err) {
-    console.error(err);
-    alert("Server error");
+    console.error("REGISTER ERROR:", err);
+    alert("Network/API error — check console + backend SSL");
+  } finally {
+    button.disabled = false;
+    button.innerText = "Create account";
   }
 
 });
 </script>
-
+  
 </body>
 </html>
