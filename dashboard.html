@@ -246,33 +246,28 @@ body{
 
   <div class="messages">
 
-    <!-- EMPTY STATE -->
-    <div class="empty-chat">
+<div class="action-row">
 
-      <div class="empty-content">
-
-        <h2>Start a conversation</h2>
-        <p>Search for users or select an existing chat to begin messaging instantly.</p>
-
-        <div class="action-row">
-
-          <div class="img-btn">
-            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/user.svg">
-            Users
-          </div>
-
-          <div class="img-btn">
-            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/message.svg">
-            Chats
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
+  <!-- USERS -->
+  <div class="img-btn" onclick="alert('open users search')">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+      <circle cx="12" cy="7" r="4"></circle>
+    </svg>
+    Users
   </div>
+
+  <!-- CHATS -->
+  <div class="img-btn" onclick="alert('open chats list')">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path>
+    </svg>
+    Chats
+  </div>
+
+</div>
 
   <div class="input-bar">
     <input placeholder="Message..." disabled>
