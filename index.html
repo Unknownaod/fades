@@ -54,17 +54,20 @@
       gap: 10px;
     }
 
-    button {
-      border: none;
-      cursor: pointer;
+    .btn {
+      display: inline-block;
       padding: 9px 14px;
       border-radius: 10px;
       font-weight: 600;
       font-size: 0.9rem;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
     }
 
     .login {
       background: #f3f4f6;
+      color: #111;
     }
 
     .signup {
@@ -109,10 +112,10 @@
     .primary {
       background: #3b82f6;
       color: white;
-    }
-
-    .secondary {
-      background: #f3f4f6;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
     }
 
     /* FOOTER */
@@ -142,17 +145,16 @@
   <!-- NAV -->
   <div class="nav">
     <div class="nav-inner">
+
       <div class="logo">fades<span>.lol</span></div>
 
-<div class="btn-group">
-  <a href="/login">
-    <button class="login">Login</button>
-  </a>
+      <div class="btn-group">
+        <a href="/login" class="btn login">Login</a>
+        <a href="/signup" class="btn signup">Sign Up</a>
+      </div>
 
-  <a href="/signup">
-    <button class="signup">Sign Up</button>
-  </a>
-</div>
+    </div>
+  </div>
 
   <!-- HERO -->
   <div class="hero">
@@ -166,7 +168,7 @@
       </p>
 
       <div class="cta">
-         <a href="/signup" class="primary">Get Started</a>
+        <a href="/signup" class="primary">Get Started</a>
       </div>
 
     </div>
