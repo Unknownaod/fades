@@ -5,778 +5,175 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>fades.lol</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    html{
-      scroll-behavior:smooth;
+    body {
+      font-family: "Inter", sans-serif;
+      background: #ffffff;
+      color: #111;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    body{
-      font-family:"Inter",sans-serif;
-      background:#050505;
-      color:white;
-      overflow-x:hidden;
+    /* NAV */
+    .nav {
+      width: 100%;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 14px 24px;
+      display: flex;
+      justify-content: center;
     }
 
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      background:
-        radial-gradient(circle at top,#7c3aed22 0%,transparent 35%),
-        radial-gradient(circle at bottom right,#2563eb15 0%,transparent 30%),
-        radial-gradient(circle at left,#9333ea10 0%,transparent 25%);
-      z-index:-2;
+    .nav-inner {
+      width: 100%;
+      max-width: 1000px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    .grid{
-      position:fixed;
-      inset:0;
-      background-image:
-        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
-      background-size:70px 70px;
-      mask-image:radial-gradient(circle at center, black 30%, transparent 85%);
-      z-index:-1;
+    .logo {
+      font-weight: 700;
+      font-size: 1.1rem;
     }
 
-    a{
-      text-decoration:none;
-      color:inherit;
+    .logo span {
+      color: #3b82f6;
     }
 
-    /* NAVBAR */
-
-    .navbar{
-      width:100%;
-      display:flex;
-      justify-content:center;
-      padding:24px;
-      position:relative;
-      z-index:10;
+    .btn-group {
+      display: flex;
+      gap: 10px;
     }
 
-    .nav-inner{
-      width:100%;
-      max-width:1250px;
-
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-
-      padding:14px 18px;
-
-      border-radius:22px;
-
-      background:rgba(255,255,255,.03);
-      border:1px solid rgba(255,255,255,.06);
-
-      backdrop-filter:blur(16px);
+    button {
+      border: none;
+      cursor: pointer;
+      padding: 9px 14px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.9rem;
     }
 
-    .logo{
-      font-size:1.2rem;
-      font-weight:800;
-      letter-spacing:-0.5px;
+    .login {
+      background: #f3f4f6;
     }
 
-    .logo span{
-      color:#8b5cf6;
-    }
-
-    .nav-links{
-      display:flex;
-      gap:38px;
-      color:#9ca3af;
-      font-size:.95rem;
-    }
-
-    .nav-links a:hover{
-      color:white;
-    }
-
-    .nav-buttons{
-      display:flex;
-      gap:12px;
-    }
-
-    .btn{
-      border:none;
-      cursor:pointer;
-      font-weight:600;
-      border-radius:14px;
-      transition:.2s;
-      padding:11px 18px;
-    }
-
-    .btn:hover{
-      transform:translateY(-1px);
-    }
-
-    .btn-dark{
-      background:#111;
-      color:white;
-      border:1px solid rgba(255,255,255,.06);
-    }
-
-    .btn-purple{
-      background:linear-gradient(135deg,#8b5cf6,#6d28d9);
-      color:white;
-      box-shadow:0 0 30px rgba(139,92,246,.3);
+    .signup {
+      background: #3b82f6;
+      color: white;
     }
 
     /* HERO */
-
-    .hero{
-      min-height:calc(100vh - 100px);
-
-      display:flex;
-      align-items:center;
-      justify-content:center;
-
-      padding:40px 24px 120px;
-      position:relative;
+    .hero {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
     }
 
-    .hero-inner{
-      width:100%;
-      max-width:1100px;
-      text-align:center;
+    .content {
+      max-width: 600px;
     }
 
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-
-      padding:10px 16px;
-      border-radius:999px;
-
-      background:rgba(139,92,246,.10);
-      border:1px solid rgba(139,92,246,.18);
-
-      color:#c4b5fd;
-      font-size:.9rem;
-
-      margin-bottom:30px;
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -1px;
     }
 
-    .hero h1{
-      font-size:clamp(4rem,9vw,8rem);
-      line-height:.9;
-      letter-spacing:-5px;
-      font-weight:900;
-
-      max-width:1000px;
-      margin:auto;
+    p {
+      color: #6b7280;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 25px;
     }
 
-    .hero h1 span{
-      color:#8b5cf6;
+    .cta {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
     }
 
-    .hero p{
-      margin:32px auto 0;
-
-      max-width:760px;
-
-      font-size:1.15rem;
-      line-height:1.8;
-
-      color:#9ca3af;
+    .primary {
+      background: #3b82f6;
+      color: white;
     }
 
-    /* CLAIM */
-
-    .claim-box{
-      margin:48px auto 0;
-
-      width:100%;
-      max-width:560px;
-
-      display:flex;
-      align-items:center;
-      gap:14px;
-
-      padding:12px;
-
-      border-radius:24px;
-
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.07);
-
-      backdrop-filter:blur(20px);
-
-      box-shadow:
-        0 0 50px rgba(139,92,246,.10),
-        inset 0 1px 0 rgba(255,255,255,.05);
+    .secondary {
+      background: #f3f4f6;
     }
-
-    .prefix{
-      padding-left:14px;
-
-      font-weight:700;
-      color:#8b5cf6;
-
-      white-space:nowrap;
-      font-size:1rem;
-    }
-
-    .claim-box input{
-      flex:1;
-
-      background:transparent;
-      border:none;
-      outline:none;
-
-      color:white;
-      font-size:1rem;
-      font-weight:500;
-    }
-
-    .claim-box input::placeholder{
-      color:#666;
-    }
-
-    .claim-btn{
-      border:none;
-      cursor:pointer;
-
-      padding:15px 24px;
-      border-radius:18px;
-
-      font-weight:700;
-      color:white;
-
-      background:linear-gradient(135deg,#8b5cf6,#6d28d9);
-
-      box-shadow:0 0 35px rgba(139,92,246,.35);
-
-      transition:.25s;
-    }
-
-    .claim-btn:hover{
-      transform:translateY(-2px);
-    }
-
-    /* FLOATING TAGS */
-
-    .floating{
-      position:absolute;
-      border-radius:18px;
-
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.06);
-
-      backdrop-filter:blur(18px);
-
-      color:#d4d4d8;
-
-      padding:16px 18px;
-
-      box-shadow:0 0 40px rgba(0,0,0,.3);
-    }
-
-    .floating strong{
-      color:white;
-      display:block;
-      margin-bottom:6px;
-    }
-
-    .f1{
-      top:22%;
-      left:8%;
-    }
-
-    .f2{
-      right:8%;
-      top:28%;
-    }
-
-    .f3{
-      bottom:16%;
-      left:14%;
-    }
-
-    .f4{
-      bottom:18%;
-      right:14%;
-    }
-
-    /* APPS SECTION */
-
-    .apps{
-      padding:60px 24px 140px;
-      position:relative;
-    }
-
-    .apps-inner{
-      max-width:1200px;
-      margin:auto;
-    }
-
-    .section-title{
-      text-align:center;
-      max-width:760px;
-      margin:auto;
-    }
-
-    .section-title h2{
-      font-size:clamp(3rem,6vw,5rem);
-      line-height:1;
-      letter-spacing:-3px;
-      font-weight:900;
-    }
-
-    .section-title p{
-      margin-top:22px;
-      color:#9ca3af;
-      font-size:1.1rem;
-      line-height:1.8;
-    }
-
-    .apps-grid{
-      margin-top:70px;
-
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:24px;
-    }
-
-    .app-card{
-      position:relative;
-
-      padding:34px 28px;
-      border-radius:30px;
-
-      background:
-        linear-gradient(
-          180deg,
-          rgba(255,255,255,.05),
-          rgba(255,255,255,.025)
-        );
-
-      border:1px solid rgba(255,255,255,.06);
-
-      backdrop-filter:blur(20px);
-
-      transition:.25s;
-      overflow:hidden;
-    }
-
-    .app-card:hover{
-      transform:translateY(-8px);
-
-      border-color:rgba(139,92,246,.35);
-
-      box-shadow:
-        0 0 40px rgba(139,92,246,.14);
-    }
-
-    .app-card::before{
-      content:"";
-      position:absolute;
-      inset:0;
-
-      background:
-        radial-gradient(
-          circle at top,
-          rgba(139,92,246,.16),
-          transparent 60%
-        );
-
-      opacity:0;
-      transition:.25s;
-    }
-
-    .app-card:hover::before{
-      opacity:1;
-    }
-
-    .app-top{
-      display:flex;
-      align-items:center;
-      gap:16px;
-
-      position:relative;
-      z-index:2;
-    }
-
-    .app-icon{
-      width:64px;
-      height:64px;
-
-      border-radius:22px;
-
-      display:flex;
-      align-items:center;
-      justify-content:center;
-
-      font-size:1.5rem;
-      font-weight:800;
-    }
-
-    .app-name{
-      font-size:1.2rem;
-      font-weight:700;
-    }
-
-    .app-desc{
-      margin-top:22px;
-
-      color:#9ca3af;
-      line-height:1.7;
-      font-size:.96rem;
-
-      position:relative;
-      z-index:2;
-    }
-
-    /* COLORS */
-
-    .discord{ background:#5865F2; }
-    .spotify{ background:#1DB954; }
-    .youtube{ background:#FF0000; }
-    .twitch{ background:#9146FF; }
-    .github{
-      background:#111;
-      border:1px solid rgba(255,255,255,.06);
-    }
-    .tiktok{
-      background:#0f0f0f;
-      border:1px solid rgba(255,255,255,.06);
-    }
-    .twitter{
-      background:#000;
-      border:1px solid rgba(255,255,255,.06);
-    }
-    .steam{ background:#0b1b2b; }
 
     /* FOOTER */
-
-    .footer{
-      padding:40px 24px 60px;
-      border-top:1px solid rgba(255,255,255,.05);
+    .footer {
+      text-align: center;
+      padding: 16px;
+      font-size: 0.85rem;
+      color: #9ca3af;
+      border-top: 1px solid #e5e7eb;
     }
 
-    .footer-inner{
-      max-width:1200px;
-      margin:auto;
-
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-
-      color:#71717a;
-      font-size:.95rem;
-    }
-
-    /* RESPONSIVE */
-
-    @media(max-width:1000px){
-
-      .apps-grid{
-        grid-template-columns:repeat(2,1fr);
+    /* MOBILE */
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 2rem;
       }
 
-      .floating{
-        display:none;
+      .cta {
+        flex-direction: column;
       }
     }
-
-    @media(max-width:700px){
-
-      .nav-links{
-        display:none;
-      }
-
-      .claim-box{
-        flex-direction:column;
-        align-items:stretch;
-      }
-
-      .claim-btn{
-        width:100%;
-      }
-
-      .apps-grid{
-        grid-template-columns:1fr;
-      }
-
-      .hero h1{
-        letter-spacing:-3px;
-      }
-
-      .footer-inner{
-        flex-direction:column;
-        gap:12px;
-        text-align:center;
-      }
-    }
-
   </style>
 </head>
+
 <body>
 
-  <div class="grid"></div>
-
-  <!-- NAVBAR -->
-
-  <nav class="navbar">
-
+  <!-- NAV -->
+  <div class="nav">
     <div class="nav-inner">
+      <div class="logo">fades<span>.lol</span></div>
 
-      <div class="logo">
-        fades<span>.lol</span>
+      <div class="btn-group">
+        <button class="login">Login</button>
+        <button class="signup">Sign Up</button>
       </div>
-
-      <div class="nav-links">
-        <a href="#">Discord</a>
-      </div>
-
-      <div class="nav-buttons">
-        <button class="btn btn-dark">Login</button>
-        <button class="btn btn-purple">Register</button>
-      </div>
-
     </div>
-
-  </nav>
-
-<!-- HERO -->
-
-<section class="hero">
-
-
-  <div class="hero-inner">
-
-    <div class="pill">
-      ✦ modern bio pages reimagined
-    </div>
-
-    <h1>
-      Build your
-      <span>digital identity.</span>
-    </h1>
-
-    <p>
-      fades.lol helps creators, gamers, developers, and communities
-      build stunning profile pages with a modern aesthetic —
-      customizable, fast, and designed to stand out.
-    </p>
-
-<div class="claim-box" style="justify-content:center; gap:14px;">
-
-  <a href="/login" style="flex:1;">
-    <button class="claim-btn" style="width:100%; background:#111; border:1px solid rgba(255,255,255,.06); box-shadow:none;">
-      Login
-    </button>
-  </a>
-
-  <a href="/signup" style="flex:1;">
-    <button class="claim-btn" style="width:100%;">
-      Sign Up
-    </button>
-  </a>
-
-</div>
-
-</section>
-
-<!-- APPS -->
-
-<section class="apps">
-
-  <div class="apps-inner">
-
-    <div class="section-title">
-
-      <div class="pill">
-        ✦ connect your platforms
-      </div>
-
-      <h2>
-        Link your favorite apps.
-      </h2>
-
-      <p>
-        Connect your socials, communities, music,
-        streams, videos, and everything else
-        directly to your fades.lol page.
-      </p>
-
-    </div>
-
-    <div class="apps-grid">
-
-      <!-- DISCORD -->
-      <div class="app-card">
-
-        <div class="app-top">
-          <div class="app-icon discord">
-            <img src="https://cdn.simpleicons.org/discord/FFFFFF" width="26" height="26">
-          </div>
-          <div class="app-name">Discord</div>
-        </div>
-
-        <div class="app-desc">
-          Showcase your server, community,
-          or personal Discord profile.
-        </div>
-
-      </div>
-
-      <!-- SPOTIFY -->
-      <div class="app-card">
-
-        <div class="app-top">
-          <div class="app-icon spotify">
-            <img src="https://cdn.simpleicons.org/spotify/FFFFFF" width="26" height="26">
-          </div>
-          <div class="app-name">Spotify</div>
-        </div>
-
-        <div class="app-desc">
-          Share your playlists, favorite tracks,
-          and currently playing music.
-        </div>
-
-      </div>
-
-      <!-- YOUTUBE -->
-      <div class="app-card">
-
-        <div class="app-top">
-          <div class="app-icon youtube">
-            <img src="https://cdn.simpleicons.org/youtube/FFFFFF" width="26" height="26">
-          </div>
-          <div class="app-name">YouTube</div>
-        </div>
-
-        <div class="app-desc">
-          Promote your videos, channels,
-          livestreams, and content.
-        </div>
-
-      </div>
-
-      <!-- TWITCH -->
-      <div class="app-card">
-
-        <div class="app-top">
-          <div class="app-icon twitch">
-            <img src="https://cdn.simpleicons.org/twitch/FFFFFF" width="26" height="26">
-          </div>
-          <div class="app-name">Twitch</div>
-        </div>
-
-        <div class="app-desc">
-          Connect your livestreams and let
-          visitors discover your content.
-        </div>
-
-      </div>
-
-      <!-- GITHUB -->
-      <div class="app-card">
-
-        <div class="app-top">
-          <div class="app-icon github">
-            <img src="https://cdn.simpleicons.org/github/FFFFFF" width="26" height="26">
-          </div>
-          <div class="app-name">GitHub</div>
-        </div>
-
-        <div class="app-desc">
-          Show your projects, repositories,
-          and development portfolio.
-        </div>
-
-      </div>
-
-      <!-- TIKTOK -->
-      <div class="app-card">
-
-        <div class="app-top">
-          <div class="app-icon tiktok">
-            <img src="https://cdn.simpleicons.org/tiktok/FFFFFF" width="26" height="26">
-          </div>
-          <div class="app-name">TikTok</div>
-        </div>
-
-        <div class="app-desc">
-          Share short-form content and grow
-          your audience across platforms.
-        </div>
-
-      </div>
-
-      <!-- X -->
-      <div class="app-card">
-
-        <div class="app-top">
-          <div class="app-icon twitter">
-            <img src="https://cdn.simpleicons.org/x/FFFFFF" width="26" height="26">
-          </div>
-          <div class="app-name">X / Twitter</div>
-        </div>
-
-        <div class="app-desc">
-          Connect your social presence and
-          keep followers updated instantly.
-        </div>
-
-      </div>
-
-      <!-- STEAM -->
-      <div class="app-card">
-
-        <div class="app-top">
-          <div class="app-icon steam">
-            <img src="https://cdn.simpleicons.org/steam/FFFFFF" width="26" height="26">
-          </div>
-          <div class="app-name">Steam</div>
-        </div>
-
-        <div class="app-desc">
-          Display your gaming profile,
-          achievements, and activity.
-        </div>
-
-      </div>
-
-    </div>
-
   </div>
 
-</section>
-  <!-- FOOTER -->
+  <!-- HERO -->
+  <div class="hero">
+    <div class="content">
 
-  <footer class="footer">
+      <h1>Simple messaging.</h1>
 
-    <div class="footer-inner">
+      <p>
+        fades.lol is a fast and clean messaging platform for chatting with friends,
+        groups, and communities in real time.
+      </p>
 
-      <div>
-        fades.lol © 2026
-      </div>
-
-      <div>
-        designed for creators, gamers, and communities
+      <div class="cta">
+        <button class="primary">Get Started</button>
+        <button class="secondary">Learn More</button>
       </div>
 
     </div>
+  </div>
 
-  </footer>
+  <!-- FOOTER -->
+  <div class="footer">
+    fades.lol © 2026
+  </div>
 
 </body>
 </html>
