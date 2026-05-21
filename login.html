@@ -5,309 +5,210 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>fades.lol - Login</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-<!-- ICON LIB -->
-<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-
-*{margin:0;padding:0;box-sizing:border-box;}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
 body{
   font-family:"Inter",sans-serif;
-  background:#050505;
-  color:white;
-  overflow-x:hidden;
+  background:#ffffff;
+  color:#111827;
 }
 
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:
-    radial-gradient(circle at top,#7c3aed22 0%,transparent 35%),
-    radial-gradient(circle at bottom right,#2563eb15 0%,transparent 30%),
-    radial-gradient(circle at left,#9333ea10 0%,transparent 25%);
-  z-index:-2;
-}
-
-.grid{
-  position:fixed;
-  inset:0;
-  background-image:
-    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
-  background-size:70px 70px;
-  mask-image:radial-gradient(circle at center, black 30%, transparent 85%);
-  z-index:-1;
-}
-
-/* NAVBAR */
-.navbar{
+/* NAV */
+.nav{
   width:100%;
-  display:flex;
-  justify-content:center;
-  padding:24px;
+  border-bottom:1px solid #e5e7eb;
 }
 
 .nav-inner{
-  width:100%;
-  max-width:1250px;
-
+  max-width:1000px;
+  margin:auto;
+  padding:14px 20px;
   display:flex;
-  align-items:center;
   justify-content:space-between;
-
-  padding:14px 18px;
-
-  border-radius:22px;
-
-  background:rgba(255,255,255,.03);
-  border:1px solid rgba(255,255,255,.06);
-
-  backdrop-filter:blur(16px);
+  align-items:center;
 }
 
 .logo{
-  font-size:1.2rem;
-  font-weight:800;
+  font-weight:700;
+  font-size:1.1rem;
 }
 
-.logo span{ color:#8b5cf6; }
+.logo span{
+  color:#3b82f6;
+}
 
 .nav-links{
   display:flex;
-  gap:38px;
-  color:#9ca3af;
+  gap:18px;
   font-size:.95rem;
+  color:#6b7280;
 }
 
 .nav-links a{
   text-decoration:none;
-  color:#9ca3af;
+  color:#6b7280;
 }
 
-.nav-links a:hover{ color:white; }
+.nav-links a:hover{
+  color:#111827;
+}
 
-.nav-buttons{
+.nav-actions{
   display:flex;
-  gap:12px;
+  gap:10px;
 }
 
-.btn{
-  padding:10px 16px;
-  border-radius:12px;
-  border:none;
-  cursor:pointer;
+.nav-actions a{
+  text-decoration:none;
+  padding:8px 12px;
+  border-radius:10px;
   font-weight:600;
-
-  display:flex;
-  align-items:center;
-  gap:6px;
+  font-size:.9rem;
 }
 
-.btn-dark{
-  background:#111;
-  color:white;
-  border:1px solid rgba(255,255,255,.06);
+.login{
+  background:#f3f4f6;
+  color:#111;
 }
 
-.btn-purple{
-  background:linear-gradient(135deg,#8b5cf6,#6d28d9);
+.signup{
+  background:#3b82f6;
   color:white;
 }
 
-/* LOGIN WRAP */
-.wrap{
+/* CENTER */
+.wrapper{
   display:flex;
   justify-content:center;
   align-items:center;
-  padding:80px 20px;
+  height:calc(100vh - 70px);
+  padding:20px;
 }
 
 .card{
   width:100%;
-  max-width:460px;
-
-  padding:30px;
-  border-radius:28px;
-
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.07);
-
-  backdrop-filter:blur(18px);
-  box-shadow:0 0 60px rgba(139,92,246,.10);
+  max-width:420px;
+  text-align:center;
 }
 
-.logo2{
-  text-align:center;
-  font-weight:900;
+h1{
+  font-size:1.8rem;
+  font-weight:700;
   margin-bottom:6px;
-  font-size:1.3rem;
 }
 
-.logo2 span{ color:#8b5cf6; }
-
-.subtitle{
-  text-align:center;
-  color:#9ca3af;
-  margin-bottom:18px;
+p{
+  color:#6b7280;
+  margin-bottom:22px;
+  font-size:.95rem;
 }
 
-/* input */
+/* INPUTS */
 .input{
-  display:flex;
-  align-items:center;
-  gap:10px;
-
+  width:100%;
   padding:12px 14px;
-  border-radius:16px;
-
-  background:rgba(255,255,255,.03);
-  border:1px solid rgba(255,255,255,.06);
-
   margin-bottom:10px;
-}
-
-.input i{
-  width:18px;
-  height:18px;
-  opacity:.8;
-}
-
-.input input{
-  width:100%;
-  background:transparent;
-  border:none;
+  border:1px solid #e5e7eb;
+  border-radius:10px;
   outline:none;
-  color:white;
+  font-size:.95rem;
 }
 
-/* button */
-.submit{
+.input:focus{
+  border-color:#3b82f6;
+}
+
+/* BUTTON */
+button{
   width:100%;
-  padding:13px;
-
+  padding:12px;
   border:none;
-  border-radius:16px;
-  cursor:pointer;
-
-  font-weight:800;
+  border-radius:10px;
+  background:#3b82f6;
   color:white;
-
-  background:linear-gradient(135deg,#8b5cf6,#6d28d9);
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-
-  transition:.2s;
+  font-weight:600;
+  cursor:pointer;
+  margin-top:10px;
 }
 
-.submit:hover{
-  transform:translateY(-2px);
+button:hover{
+  background:#2563eb;
 }
 
-/* small text */
+/* bottom */
 .bottom{
-  margin-top:12px;
-  text-align:center;
-  font-size:.8rem;
+  margin-top:14px;
+  font-size:.85rem;
   color:#6b7280;
 }
 
 .bottom a{
-  color:#8b5cf6;
+  color:#3b82f6;
   text-decoration:none;
 }
-
 </style>
 </head>
 
 <body>
 
-<div class="grid"></div>
-
-<!-- NAVBAR -->
-<div class="navbar">
+<!-- NAV -->
+<div class="nav">
   <div class="nav-inner">
 
     <div class="logo">fades<span>.lol</span></div>
 
     <div class="nav-links">
+      <a href="/">Home</a>
       <a href="#">Features</a>
-      <a href="#">Themes</a>
-      <a href="#">Discover</a>
-      <a href="#">Discord</a>
+      <a href="#">Help</a>
     </div>
 
-    <div class="nav-buttons">
-      <button class="btn btn-dark">
-        <i data-lucide="log-in"></i> Login
-      </button>
-      <button class="btn btn-purple">
-        <i data-lucide="user-plus"></i> Register
-      </button>
+    <div class="nav-actions">
+      <a href="/login" class="login">Login</a>
+      <a href="/signup" class="signup">Sign Up</a>
     </div>
 
   </div>
 </div>
 
 <!-- LOGIN -->
-<div class="wrap">
-
+<div class="wrapper">
   <div class="card">
 
-    <div class="logo2">fades<span>.lol</span></div>
-    <div class="subtitle">Welcome back</div>
+    <h1>Welcome back</h1>
+    <p>Login to continue to fades.lol</p>
 
-    <!-- EMAIL -->
-    <div class="input">
-      <i data-lucide="mail"></i>
-      <input placeholder="email">
-    </div>
+    <form id="loginForm">
+      <input class="input" name="email" placeholder="Email" required>
+      <input class="input" name="password" type="password" placeholder="Password" required>
 
-    <!-- PASSWORD -->
-    <div class="input">
-      <i data-lucide="lock"></i>
-      <input type="password" placeholder="password">
-    </div>
-
-    <button class="submit">
-      <i data-lucide="arrow-right"></i>
-      Login
-    </button>
+      <button type="submit">Login</button>
+    </form>
 
     <div class="bottom">
-      Don’t have an account? <a href="/signup.html">Sign up</a>
+      Don’t have an account? <a href="/signup">Sign up</a>
     </div>
 
   </div>
-
 </div>
 
 <script>
-lucide.createIcons();
-
 const API = "https://api.fades.lol";
 
-const emailInput = document.querySelectorAll(".input input")[0];
-const passwordInput = document.querySelectorAll(".input input")[1];
-const button = document.querySelector(".submit");
+document.getElementById("loginForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-button.addEventListener("click", async () => {
+  const form = e.target;
 
-  const username = emailInput.value.trim();
-  const password = passwordInput.value.trim();
-
-  if (!username || !password) {
-    alert("Fill in all fields");
-    return;
-  }
+  const email = form.email.value;
+  const password = form.password.value;
 
   try {
     const res = await fetch(`${API}/api/auth/login`, {
@@ -316,7 +217,7 @@ button.addEventListener("click", async () => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        username,
+        email,
         password
       })
     });
@@ -328,17 +229,14 @@ button.addEventListener("click", async () => {
       return;
     }
 
-    // ✅ STORE JWT TOKEN (NOT SESSION COOKIE)
     localStorage.setItem("token", data.token);
 
-    // redirect
     window.location.href = "/dashboard";
 
   } catch (err) {
     console.error(err);
     alert("Server error");
   }
-
 });
 </script>
 
